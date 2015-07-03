@@ -46,12 +46,12 @@
 
 	'use strict';
 
-	var React = __webpack_require__(1),
-	    Router = __webpack_require__(157),
-	    routes = __webpack_require__(196);
+	var React = __webpack_require__(1);
+	var Router = __webpack_require__(157);
+	var routes = __webpack_require__(196);
 
 	Router.run(routes, function (Root) {
-		React.render(React.createElement(Root, null), document.getElementById('app'));
+	  React.render(React.createElement(Root, null), document.getElementById('app'));
 	});
 
 /***/ },
@@ -23546,40 +23546,57 @@
 
 	'use strict';
 
-	var React = __webpack_require__(1),
-	    Main = __webpack_require__(198),
-	    Home = __webpack_require__(199),
-	    Router = __webpack_require__(157),
-	    DefaultRoute = Router.DefaultRoute,
-	    Route = Router.Route;
+	var React = __webpack_require__(1);
+	var Main = __webpack_require__(197);
+	var Home = __webpack_require__(198);
+	var Router = __webpack_require__(157);
+	var DefaultRoute = Router.DefaultRoute;
+	var Route = Router.Route;
 
-	module.exports = React.createElement(Route, { name: 'app', path: '/', handler: Main });
+	module.exports = React.createElement(
+	  Route,
+	  { name: 'app', path: '/', handler: Main },
+	  React.createElement(DefaultRoute, { handler: Home })
+	);
 
 /***/ },
-/* 197 */,
-/* 198 */
+/* 197 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	var React = __webpack_require__(1);
+	var RouteHandler = __webpack_require__(157).RouteHandler;
 
 	var Main = React.createClass({
-		displayName: 'Main',
+	  displayName: 'Main',
 
-		render: function render() {
-			return React.createElement(
-				'h2',
-				null,
-				'Hello Sako'
-			);
-		}
+	  render: function render() {
+	    return React.createElement(
+	      'div',
+	      { className: 'main-container' },
+	      React.createElement(
+	        'nav',
+	        { className: 'navbar navbar-default', role: 'navigation' },
+	        React.createElement(
+	          'div',
+	          { className: 'col-sm-7 col-sm-offset-2', style: { marginTop: 15 } },
+	          'MENU'
+	        )
+	      ),
+	      React.createElement(
+	        'div',
+	        { className: 'container' },
+	        React.createElement(RouteHandler, null)
+	      )
+	    );
+	  }
 	});
 
 	module.exports = Main;
 
 /***/ },
-/* 199 */
+/* 198 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -23587,20 +23604,18 @@
 	var React = __webpack_require__(1);
 
 	var Home = React.createClass({
-		displayName: "Home",
+	  displayName: "Home",
 
-		render: function render() {
-			return React.createElement(
-				"div",
-				null,
-				React.createElement(
-					"h2",
-					{ className: "text-center" },
-					"Search by GitHub Username"
-				)
-			);
-		}
+	  render: function render() {
+	    return React.createElement(
+	      "h2",
+	      { className: "text-center" },
+	      "Search by Github Username Above"
+	    );
+	  }
 	});
+
+	module.exports = Home;
 
 /***/ }
 /******/ ]);
