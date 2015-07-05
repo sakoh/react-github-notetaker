@@ -1,14 +1,11 @@
-var React = require('react');
+import React from 'react';
 
 var {string, array} = React.PropTypes;
 
-var Repos = React.createClass({
-	propTypes: {
-		username: string.isRequired,
-		repos: array.isRequired
-	},
-	render: function() {
-		var repos = this.props.repos.map(function (repo, index) {
+class Repos extends React.Component {
+
+	render() {
+		var repos = this.props.repos.map((repo, index) => {
 			return (
 				<li className="list-group-item" key={index}>
 					{repo.html_url && <h4><a href={repo.html_url}>{repo.name}</a></h4>}
@@ -16,7 +13,7 @@ var Repos = React.createClass({
 				</li>
 			);
 		});
-		
+
 		return (
 			<div className="col-md-4">
 				<h2>User Repos</h2>
@@ -26,6 +23,12 @@ var Repos = React.createClass({
 			</div>
 		);
 	}
-});
 
-module.exports = Repos;
+}
+
+Repos.propTypes = {
+	username: string.isRequired,
+	repos: array.isRequired
+};
+
+export default Repos;

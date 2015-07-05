@@ -1,7 +1,8 @@
-var React = require('react');
+import React from 'react';
 
-var UserProfile = React.createClass({
-	render: function() {
+class UserProfile extends React.Component {
+
+	render() {
 		return (
 			<div className="col-md-4">
 				<h3> User Profile </h3>
@@ -20,6 +21,7 @@ var UserProfile = React.createClass({
 			</div>
 		);
 	}
-});
 
-module.exports = UserProfile;
+}
+
+export default UserProfile;
