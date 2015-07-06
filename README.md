@@ -11,3 +11,5 @@ go to `http://localhost:3000`
 
 To compile ES6/Babel files with Webpack, open a new terminal tab and type:
 `webpack -w`
+
+See Demo (here)[http://peaceful-thicket-6382.heroku.com/]
