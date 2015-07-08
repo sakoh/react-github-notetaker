@@ -40,10 +40,6 @@ class Profile extends React.Component {
 		this.init();
 	}
 
-	componentWillMount() {
-		this = this.context.router;
-	}
-
 	componentWillUnmount(){
 		base.removeBinding(this.ref);
 	}
