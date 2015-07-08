@@ -23913,7 +23913,7 @@
 		return Profile;
 	})(_react2['default'].Component);
 
-	reactMixin(Profile.prototype, _reactRouter2['default'].State);
+	reactMixin.onClass(Profile, _reactRouter2['default'].State);
 
 	exports['default'] = Profile;
 	module.exports = exports['default'];

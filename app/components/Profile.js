@@ -71,7 +71,7 @@ class Profile extends React.Component {
 	}
 }
 
-reactMixin(Profile.prototype, Router.State);
+reactMixin.onClass(Profile, Router.State);
 
 
 export default Profile;
