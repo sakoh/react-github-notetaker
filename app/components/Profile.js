@@ -4,6 +4,7 @@ import UserProfile from './Github/UserProfile';
 import Notes from './Notes/Notes';
 import Rebase from 're-base';
 import helpers from '../utils/helpers';
+import Router from "react-router";
 
 var base = Rebase.createClass("https://react-github-note.firebaseio.com/");
 
@@ -20,13 +21,13 @@ class Profile extends React.Component {
 	}
 
 	init() {
-		this.ref = base.bindToState(this.router.getCurrentParams().username, {
+		this.ref = base.bindToState(this.getCurrentParams().username, {
 			context: this,
 			asArray: true,
 			state: 'notes'
 		});
 
-		helpers.getGihubInfo(this.router.getCurrentParams().username)
+		helpers.getGihubInfo(this.getCurrentParams().username)
 			.then( (dataObj) => {
 				this.setState({
 					bio: dataObj.bio,
@@ -40,7 +41,7 @@ class Profile extends React.Component {
 	}
 
 	componentWillMount() {
-		this.router = this.context.router;
+		this = this.context.router;
 	}
 
 	componentWillUnmount(){
@@ -53,13 +54,13 @@ class Profile extends React.Component {
 	}
 
 	handleAddNote(newNote){
-		base.post(this.router.getCurrentParams().username, {
+		base.post(this.getCurrentParams().username, {
 			data: this.state.notes.concat([newNote])
 		});
 	}
 
 	render() {
-		var username = this.router.getCurrentParams().username;
+		var username = this.getCurrentParams().username;
 
 		return (
 			<div className="row">
@@ -74,8 +75,7 @@ class Profile extends React.Component {
 	}
 }
 
-Profile.contextTypes = {
-	router: React.PropTypes.func.isRequired
-};
+reactMixin(Profile.prototype, Router.State);
+
 
 export default Profile;
